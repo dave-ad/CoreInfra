@@ -9,7 +9,7 @@ h1:focus {
 }
 
 a, .btn-link {
-    color: #0071c1;
+    color: #edb44a;
 }
 
 .btn-primary {
@@ -30,8 +30,11 @@ a, .btn-link {
 .btn-primary:active,
 .btn-primary:hover,
 .btn-primary:visited {
-    border-color: #f2a81f; 
+    /*border-color: #f2a81f;*/
+    background-color: #f7ae25;
     border: none;
+    border: 3px solid f2a81f;
+    box-shadow: none !important;
 }
 
 
@@ -56,7 +59,7 @@ a, .btn-link {
 }
 
 .valid.modified:not([type=checkbox]) {
-    outline: 1px solid #26b050;
+    outline: 1px solid #f7a814;
 }
 
 .invalid {
