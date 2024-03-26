@@ -14,12 +14,41 @@ a, .btn-link {
 
 .btn-primary {
     color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    background-color: #ffb200;
+    border-color: #ffb200;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.btn:focus, 
+.btn:active:focus, 
+.btn-link.nav-link:focus, 
+.form-control:focus, 
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #f7a814;
+}
+
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:hover,
+.btn-primary:visited {
+    border-color: #f2a81f; 
+    border: none;
+}
+
+
+.btn-primary:hover {
+    outline: none;
+    background-color: #f7ae25;
+    border: none;
+    /*box-shadow: none !important;*/
+    box-shadow: 0 2px 10px -2px rgba(43, 43, 43, 0.5);
+}
+
+.form-control:focus, 
+.form-check-input:focus {
+    border: 1px solid #f2a81f;
+    /*outline: none !important;*/
+    /*border-color: transparent !important;*/
+    box-shadow: none !important;
 }
 
 .content {
@@ -99,3 +128,100 @@ a, .btn-link {
     .loading-progress-text:after {
         content: var(--blazor-load-percentage-text, "Loading");
     }
+
+
+/*Login Page*/
+.card {
+    margin: auto;
+    margin-top: 80px;
+    max-width: 360px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2px;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 9px 20px -9px rgba(43, 43, 43, 0.2);
+}
+
+.signin {
+    color: #fff;
+    background-color: #ffb200;
+    /*border-color: #ffb200;*/
+    padding: 18px 5px 5px 5px;
+    justify-content: center;
+    border-radius: 7px;
+    text-align: center;
+    width: 100%;
+    height: 60px;
+    margin-top: -40px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px -2px rgba(43, 43, 43, 0.5);
+}
+
+.form-group {
+    margin: 18px; 
+}
+
+.authBtn {
+    padding: 10px 5px 5px 5px;
+    justify-content: center;
+    border-radius: 8px;
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    display: block;
+    box-shadow: 0 2px 10px -2px rgba(43, 43, 43, 0.5);
+}
+
+.reglink {
+    width: 180px;
+    margin: auto;
+    font-size: 12px
+}
+
+.reglink a {
+    text-decoration: none;
+    color: #ffb200;
+}
+
+.reglink span {
+    font-weight: bold;
+}
+
+
+/*Register Page*/
+.signup {
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.headParagraph {
+    margin: 10px 20px;
+    font-size: 14px;
+    color: #a09b9b;
+    margin-bottom: 30px;
+}
+
+.headParagraph h5 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #535353;
+    margin-bottom: 15px;
+}
+
+.tandc {
+    font-size: 12px
+}
+
+.tandc input[type="checkbox"]:checked {
+    background-color: #f21f7b;
+    border-color: #f21f7b;
+}
+
+.tandc span {
+    font-weight: bold;
+}

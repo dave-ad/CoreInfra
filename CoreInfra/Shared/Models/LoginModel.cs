@@ -4,6 +4,8 @@ namespace CoreInfra.Shared.Models;
 
 public  class LoginModel
 {
+    public string? ClientId { get; set; }
+
     [Required, EmailAddress]
     public string? Email { get; set; }
 

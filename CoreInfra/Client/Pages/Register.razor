@@ -1,0 +1,93 @@
+﻿@page "/register"
+@inject IAuthService AuthService
+@inject NavigationManager NavigationManager
+
+
+@if (ShowErrors)
+{
+    <div class="alert alert-danger" role="alert">
+        @foreach (var error in Errors!)
+        {
+            <p>@error</p>
+        }
+    </div>
+}
+
+<div class="card signup">
+    <div class="card-body">
+        <div class="headParagraph">
+            <h5 class="card-title">Sign Up</h5>
+            <p>Enter your email and password to register</p>
+        </div>
+        <EditForm Model="RegisterModel" OnValidSubmit="HandleRegistration">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="form-group">
+                <InputText Id="clientId" class="form-control" @bind-Value="RegisterModel.ClientID" placeholder="Client ID" />
+                <ValidationMessage For="@(() => RegisterModel.ClientID)" />
+            </div>
+            <div class="form-group">
+                <InputText Id="first6DigitsOfCard" class="form-control" @bind-Value="RegisterModel.First6DigitsOfCard" placeholder="First 6 digit of Card" />
+                <ValidationMessage For="@(() => RegisterModel.First6DigitsOfCard)" />
+            </div>
+            <div class="form-group">
+                <InputText Id="last4DigitofCard" class="form-control" @bind-Value="RegisterModel.Last4DigitsOfCard" placeholder="Last 4 digit of Card" />
+                <ValidationMessage For="@(() => RegisterModel.Last4DigitsOfCard)" />
+            </div>
+            <div class="form-group">
+                <InputText Id="email" class="form-control" @bind-Value="RegisterModel.Email" placeholder="Email Address" />
+                <ValidationMessage For="@(() => RegisterModel.Email)" />
+            </div>
+            <div class="form-group">
+                <InputText Id="phoneNumber" type="phoneNumber" class="form-control" @bind-Value="RegisterModel.PhoneNumber" placeholder="Phone Number" />
+                <ValidationMessage For="@(() => RegisterModel.PhoneNumber)" />
+            </div>
+            <div class="form-group">
+                <InputText Id="password" type="password" class="form-control" @bind-Value="RegisterModel.Password" placeholder="Password" />
+                <ValidationMessage For="@(() => RegisterModel.Password)" />
+            </div>
+            <div class="form-group">
+                <InputText Id="confirmPassword" type="password" class="form-control" @bind-Value="RegisterModel.ConfirmPassword" placeholder="Confirm Password" />
+                <ValidationMessage For="@(() => RegisterModel.ConfirmPassword)" />
+            </div>
+            <div class="form-group tandc">
+                <InputCheckbox class="form-check-input" @bind-Value="agreeToTerms" /> I agree to the <span>Terms and Conditions</span>
+                <ValidationMessage For="@(() => agreeToTerms)">Please agree to the terms and conditions</ValidationMessage>
+            </div>
+            <div class="input-container">
+                <button type="submit" class="btn btn-primary authBtn">SIGN UP</button>
+            </div>
+
+            <div class="reglink">
+                <p>Already have an account? <a href="/register"><span>Sign in</span></a></p>
+            </div>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+
+    private RegisterModel RegisterModel = new RegisterModel();
+    private bool ShowErrors;
+    private IEnumerable<string>? Errors;
+
+    private bool agreeToTerms;
+
+    private async Task HandleRegistration()
+    {
+        ShowErrors = false;
+
+        var result = await AuthService.Register(RegisterModel);
+
+        if (result.Successful)
+        {
+            NavigationManager.NavigateTo("/");
+        }
+        else
+        {
+            Errors = result.Errors;
+            ShowErrors = true;
+        }
+    }
+}
